@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laptop Price Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #3a6186, #89253e);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 6px;
+            display: block;
+            color: #444;
+        }
+
+        select, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        select:focus, input[type="submit"]:hover {
+            outline: none;
+            border-color: #3a6186;
+        }
+
+        input[type="submit"] {
+            background-color: #3a6186;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2b4e6f;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Laptop Price Predictor</h2>
+    <form method="POST">
+
+        <label>Brand</label>
+        <select name="brand">
+            <option value="Acer">Acer</option>
+            <option value="Apple">Apple</option>
+            <option value="Asus">Asus</option>
+            <option value="Chuwi">Chuwi</option>
+            <option value="Dell">Dell</option>
+            <option value="HP">HP</option>
+            <option value="Infinix">Infinix</option>
+            <option value="Lenovo">Lenovo</option>
+        </select>
+
+        <label>Processor Name</label>
+        <select name="processor_name">
+            <option value="Celeron Dual">Celeron Dual</option>
+            <option value="Core i3">Core i3</option>
+            <option value="Core i5">Core i5</option>
+            <option value="Core i7">Core i7</option>
+            <option value="Core i9">Core i9</option>
+            <option value="Intel Atom">Intel Atom</option>
+            <option value="Intel Celeron">Intel Celeron</option>
+            <option value="Intel Pentium">Intel Pentium</option>
+            <option value="M1">M1</option>
+            <option value="M2">M2</option>
+            <option value="Ryzen">Ryzen</option>
+        </select>
+
+        <label>Processor Generation</label>
+        <select name="processor_gnrtn">
+            <option value="1st">1st</option>
+            <option value="2nd">2nd</option>
+            <option value="3rd">3rd</option>
+            <option value="4th">4th</option>
+            <option value="5th">5th</option>
+            <option value="6th">6th</option>
+            <option value="7th">7th</option>
+            <option value="8th">8th</option>
+        </select>
+
+        <label>RAM (GB)</label>
+        <select name="ram_gb">
+            <option value="4">4 GB</option>
+            <option value="8">8 GB</option>
+            <option value="12">12 GB</option>
+            <option value="16">16 GB</option>
+            <option value="32">32 GB</option>
+            <option value="64">64 GB</option>
+        </select>
+
+        <label>SSD (GB)</label>
+        <select name="ssd">
+            <option value="0">0 GB</option>
+            <option value="128">128 GB</option>
+            <option value="256">256 GB</option>
+            <option value="512">512 GB</option>
+            <option value="1024">1 TB</option>
+        </select>
+
+        <label>HDD (GB)</label>
+        <select name="hdd">
+            <option value="0">0 GB</option>
+            <option value="500">500 GB</option>
+            <option value="1000">1 TB</option>
+            <option value="2000">2 TB</option>
+        </select>
+
+        <label>Graphic Card (GB)</label>
+        <select name="graphic_card_gb">
+            <option value="0">0 GB</option>
+            <option value="2">2 GB</option>
+            <option value="4">4 GB</option>
+            <option value="6">6 GB</option>
+            <option value="8">8 GB</option>
+        </select>
+
+        <label>Touchscreen</label>
+        <select name="Touchscreen">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label>MS Office</label>
+        <select name="msoffice">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <input type="submit" value="Predict Price">
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            Predicted Price: ₹{{ prediction }}
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>
